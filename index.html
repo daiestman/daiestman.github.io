@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>访问李瑞锦的博客 | 技术教程、编程开发和网页设计资源</title>
-    <meta name="description" content="立即访问李瑞锦的博客获取优质的技术教程、编程开发和网页设计资源。探索前沿的网页开发技术和实用编程技巧。">
-    <meta name="keywords" content="李瑞锦, 博客, 泸州，泸州李瑞锦, 网页开发, daieat的博客，daiblog.wuaze.com">
-    <link rel="canonical" href="https://daiblog.wuaze.com">
+    <title>Schale档案室 - 入群验证系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,200 +13,707 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body {
-            background-color: #f8f9fa;
-            color: #202124;
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
+        :root {
+            --primary: #3a86ff;
+            --secondary: #ff006e;
+            --dark: #22223b;
+            --light: #f8f9fa;
+            --success: #2ecc71;
+            --warning: #f39c12;
         }
         
-        /* SEO关键词背景 */
-        .keywords-overlay {
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.05;
-            pointer-events: none;
-            font-size: 18px;
-            line-height: 1.5;
-            padding: 20px;
-            word-break: break-all;
-            overflow: hidden;
-            font-weight: 700;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.gamersky.com/image2023/07/20230717_s_494_4/gamersky_01origin_01_20237172329EBA.jpg') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
         }
         
-        .content {
+        .container {
+            background: rgba(32, 32, 65, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            border: 1px solid rgba(74, 85, 162, 0.5);
             position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(168, 239, 255, 0.1), transparent 30%);
+            animation: rotate 6s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .header {
             text-align: center;
-            height: 100vh;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(58, 134, 255, 0.7);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #ffe5ff;
+            text-shadow: 0 0 10px rgba(255, 230, 255, 0.6);
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b3c4ff;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        
+        .instructions i {
+            color: var(--primary);
+            margin-right: 8px;
+        }
+        
+        .warning {
+            background: rgba(255, 0, 110, 0.15);
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 0.95rem;
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .warning i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .quiz-container {
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(41, 41, 82, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(74, 85, 162, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            background: rgba(51, 51, 102, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background: var(--primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
             justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid rgba(148, 163, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
             align-items: center;
         }
         
-        .site-title {
-            font-size: 2.5rem;
-            color: #202124;
-            margin-bottom: 15px;
-            font-weight: 700;
+        .option:hover {
+            border-color: var(--primary);
+            background: rgba(58, 134, 255, 0.15);
         }
         
-        .site-description {
-            font-size: 1.2rem;
-            color: #5f6368;
-            margin-bottom: 40px;
-            max-width: 600px;
+        .option input {
+            margin-right: 12px;
         }
         
-        .btn {
-            display: inline-block;
-            background: #1a73e8;
-            color: white;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
-            border: 1px solid transparent;
-            position: relative;
-            z-index: 20;
+        .option.selected {
+            border-color: var(--success);
+            background: rgba(46, 204, 113, 0.15);
         }
         
-        .btn:hover {
-            background: #1765cc;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
-        }
-        
-        .btn:active {
-            transform: translateY(1px);
-        }
-        
-        .blog-url {
+        .submit-btn {
             display: block;
-            margin-top: 25px;
-            color: #1a73e8;
-            font-size: 1.1rem;
-            font-weight: 500;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.2rem;
+            background: linear-gradient(to right, var(--primary), #6a5af9);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .keywords-box {
-            margin-top: 40px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            max-width: 80%;
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.6);
+        }
+        
+        .submit-btn:disabled {
+            background: linear-gradient(to right, #777, #999);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid var(--success);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .failure {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .success-icon {
+            color: var(--success);
+        }
+        
+        .failure-icon {
+            color: #e74c3c;
+        }
+        
+        .result-message {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        
+        .group-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        .group-number {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
             font-size: 0.9rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #dadce0;
+            color: rgba(255, 255, 255, 0.6);
         }
         
-        .keywords-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #5f6368;
-        }
-        
-        .keywords-list {
+        .art-section {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
         
-        .keyword-tag {
-            background: rgba(66, 133, 244, 0.1);
-            color: #1a73e8;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+        .art-item {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* 响应式设计 */
-        @media (max-width: 600px) {
-            .site-title {
-                font-size: 1.8rem;
-            }
-            
-            .site-description {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 14px 28px;
-                font-size: 1rem;
-            }
-            
-            .keywords-box {
-                max-width: 95%;
-            }
+        .art-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 新增视频上传区域样式 */
+        .upload-section {
+            padding: 20px;
+            background: rgba(41, 41, 82, 0.6);
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px dashed #4a55a2;
+            text-align: center;
+        }
+        
+        .upload-label {
+            display: block;
+            padding: 15px;
+            border: 2px solid rgba(148, 163, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-label:hover {
+            border-color: var(--primary);
+            background: rgba(58, 134, 255, 0.15);
+        }
+        
+        .video-preview {
+            max-width: 100%;
+            margin-top: 15px;
+            display: none;
+            border-radius: 10px;
+        }
+        
+        .attempts-counter {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #ff9966;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background: rgba(255, 153, 102, 0.15);
+            border-radius: 20px;
+            display: inline-block;
+            float: right;
+        }
+        
+        .file-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #b3c4ff;
+        }
+        
+        .ip-info {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: right;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <!-- 仅用于SEO的关键词（用户不可见） -->
-    <div class="keywords-overlay" aria-hidden="true">
-        李瑞锦 博客 泸州 daiblog 泸州李瑞锦 daiest的博客
-    </div>
-    
-    <div class="content">
-        <h1 class="site-title">李瑞锦的博客</h1>
-        
-        <p class="site-description">
-            一个专注于技术教程、编程开发和网页设计的前沿博客，提供实用指导和创新方案
-        </p>
-        
-        <a href="https://daiblog.wuaze.com" class="btn" id="visitBtn">
-            访问博客
-        </a>
-        
-        <a href="https://daiblog.wuaze.com" class="blog-url">daiblog.wuaze.com</a>
-        
-        <div class="keywords-box">
-            <h3>核心主题</h3>
-            <div class="keywords-list">
-                <span class="keyword-tag">技术教程</span>
-                <span class="keyword-tag">编程开发</span>
-                <span class="keyword-tag">网页设计</span>
-                <span class="keyword-tag">前端框架</span>
-                <span class="keyword-tag">JavaScript</span>
-                <span class="keyword-tag">CSS样式</span>
-                <span class="keyword-tag">网站优化</span>
-                <span class="keyword-tag">响应式布局</span>
-                <span class="keyword-tag">开发工具</span>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-key"></i> SCHALE ARCHIVE
             </div>
+            <h1>入群验证系统</h1>
+            <p class="subtitle">基沃托斯理事会对策室：通过验证以证明您真正的Sensei身份</p>
+        </div>
+        
+        <!-- 尝试次数计数器 -->
+        <div class="attempts-counter" id="attempts-counter">
+            剩余尝试次数: <span id="attempts-left">2</span>
+        </div>
+        
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>重要提示:</strong> 
+                本验证系统专为保护社群环境、杜绝不当行为。请认真回答以下问题，真正的基沃托斯老师不会感到困难。
+                注意：每人仅有2次尝试机会，多次失败将无法加入！
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <p><i class="fas fa-info-circle"></i> 请回答以下关于《蔚蓝档案》的问题，全部答对可获得入群号码</p>
+            <p><i class="fas fa-info-circle"></i> 题目基于游戏核心知识，普通玩家可以轻松回答</p>
+        </div>
+        
+        <div class="quiz-container">
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">1</div>
+                    <div class="question-text">《蔚蓝档案》中，老师醒来后第一个见到的是？</div>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question1" value="A"> A. 优香
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="B"> B. 日奈
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="C"> C. 阿罗娜
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="D"> D. 白子
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">2</div>
+                    <div class="question-text">下列哪项体力消耗值是正确的？</div>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question2" value="A"> A. 普通关卡：10体力
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="B"> B. 困难关卡：15体力
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="C"> C. 活动关卡：18体力
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="D"> D. 悬赏通缉：25体力
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">3</div>
+                    <div class="question-text">下列哪项关于记忆大厅的描述是准确的？</div>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question3" value="A"> A. 首个解锁的角色是阿露
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question3" value="B"> B. 通过累计好感度解锁内容
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question3" value="C"> C. 需要消耗体力进入
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question3" value="D"> D. 可获得角色碎片
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 修改后的问题4：三星角色验证 -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">4</div>
+                    <div class="question-text">下列角色中初始星级不是三星的是？</div>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question4" value="A"> A. 白子
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question4" value="B"> B. 星野
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question4" value="C"> C. 优香
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question4" value="D"> D. 都是三星
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 新增视频上传区域 -->
+            <div class="upload-section">
+                <div class="question-header">
+                    <div class="question-number">5</div>
+                    <div class="question-text">请上传2-3关卡通关视频（验证游戏进度）</div>
+                </div>
+                <label class="upload-label">
+                    <i class="fas fa-upload"></i> 点击上传视频
+                    <input type="file" id="video-upload" accept="video/mp4,video/avi,video/mov,video/mkv" style="display:none">
+                </label>
+                <div class="file-info" id="file-info">未选择文件</div>
+                <video controls class="video-preview" id="video-preview"></video>
+                <p class="subtitle">支持格式: MP4, AVI, MOV, MKV | 文件大小 ≤ 100MB</p>
+            </div>
+            
+            <!-- IP信息显示 -->
+            <div class="ip-info" id="ip-info">
+                您的IP: <span id="ip-address">获取中...</span>
+            </div>
+            
+            <button id="submit-btn" class="submit-btn">
+                验证身份 <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        
+        <div id="result" class="result">
+            <div id="result-icon" class="result-icon"></div>
+            <div id="result-message" class="result-message"></div>
+        </div>
+        
+        <div id="group-info" class="group-info">
+            <h3><i class="fas fa-users"></i> 验证成功！欢迎加入蔚蓝档案社群</h3>
+            <p>请复制以下入群凭证</p>
+            <div class="group-number">114514xp</div>
+            <p>入群后请遵守规则，尊重其他老师和学生</p>
+        </div>
+        
+        <div class="art-section">
+            <div class="art-item">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/03/22/308333512/dc2b30cb5c2aa3cbd1f9b8d93e7b9d3c_1447290001952761758.jpg" alt="Blue Archive">
+            </div>
+            <div class="art-item">
+                <img src="https://cdn.akamai.steamstatic.com/steam/apps/2078650/header.jpg" alt="Blue Archive">
+            </div>
+            <div class="art-item">
+                <img src="https://cdn.akamai.steamstatic.com/steam/apps/2078650/ss_1c1a2a6d26cd28a68b0cac78c42b8c2f6e8f40e5.600x338.jpg" alt="Blue Archive">
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Schale 理事会对策室 | 蔚蓝档案非官方社群</p>
+            <p>本验证系统旨在维护社区环境，严禁不当行为</p>
         </div>
     </div>
     
     <script>
-        // 博客跳转脚本
-        document.getElementById('visitBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'https://daiblog.wuaze.com';
-        });
+        // 正确答案
+        const correctAnswers = {
+            question1: "C", // 老师醒来见到的第一个是阿罗娜
+            question2: "A", // 普通关卡10体力
+            question3: "B", // 记忆大厅通过好感度解锁
+            question4: "C"  // 优香初始为2星
+        };
         
-        // 添加一些微妙的交互效果
-        document.querySelectorAll('.keyword-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = 'rgba(66, 133, 244, 0.2)';
+        // 获取用户IP
+        async function getUserIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip || 'unknown';
+            } catch (error) {
+                console.error('获取IP失败:', error);
+                return 'unknown';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const submitBtn = document.getElementById('submit-btn');
+            const videoUpload = document.getElementById('video-upload');
+            const videoPreview = document.getElementById('video-preview');
+            const fileInfo = document.getElementById('file-info');
+            const attemptsCounter = document.getElementById('attempts-left');
+            const ipAddressElement = document.getElementById('ip-address');
+            const resultDiv = document.getElementById('result');
+            const resultIcon = document.getElementById('result-icon');
+            const resultMessage = document.getElementById('result-message');
+            const groupInfo = document.getElementById('group-info');
+            
+            // 获取并显示用户IP
+            const userIP = await getUserIP();
+            ipAddressElement.textContent = userIP;
+            
+            // 从localStorage获取尝试次数
+            const attemptsKey = `attempts_${userIP}`;
+            let attempts = localStorage.getItem(attemptsKey) || 2;
+            attemptsCounter.textContent = attempts;
+            
+            // 添加选项选择效果
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    
+                    // 移除其他选项的选中样式
+                    const question = this.closest('.question');
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // 添加当前选项的选中样式
+                    this.classList.add('selected');
+                });
             });
             
-            tag.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = 'rgba(66, 133, 244, 0.1)';
+            // 视频上传处理
+            videoUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // 验证视频格式
+                    const validTypes = [
+                        'video/mp4', 
+                        'video/avi', 
+                        'video/quicktime', 
+                        'video/x-matroska'
+                    ];
+                    const maxSize = 100 * 1024 * 1024; // 100MB
+                    
+                    if (!validTypes.includes(file.type) || file.size > maxSize) {
+                        fileInfo.innerHTML = `<span style="color:#ff5e62">无效格式或文件过大</span>`;
+                        return;
+                    }
+                    
+                    fileInfo.textContent = `已选择: ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`;
+                    
+                    // 显示视频预览
+                    videoPreview.style.display = 'block';
+                    videoPreview.src = URL.createObjectURL(file);
+                }
             });
+            
+            submitBtn.addEventListener('click', function() {
+                // 检查尝试次数
+                if (attempts <= 0) {
+                    showResult('failure', '尝试次数耗尽', '您已用尽2次机会，请24小时后再试');
+                    return;
+                }
+                
+                // 检查视频是否上传
+                if (!videoUpload.files[0]) {
+                    showResult('failure', '验证失败', '请上传2-3关卡通关视频');
+                    return;
+                }
+                
+                // 检查所有问题是否已回答
+                let answeredAll = true;
+                for (const question in correctAnswers) {
+                    if (!document.querySelector(`input[name="${question}"]:checked`)) {
+                        answeredAll = false;
+                        break;
+                    }
+                }
+                
+                if (!answeredAll) {
+                    showResult('failure', '请回答所有问题', '您还有未回答的问题，请完成全部题目');
+                    return;
+                }
+                
+                // 验证答案
+                let score = 0;
+                for (const question in correctAnswers) {
+                    const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                    if (selectedOption.value === correctAnswers[question]) {
+                        score++;
+                    }
+                }
+                
+                // 更新尝试次数
+                attempts--;
+                localStorage.setItem(attemptsKey, attempts);
+                attemptsCounter.textContent = attempts;
+                
+                // 显示结果
+                if (score === Object.keys(correctAnswers).length) {
+                    showResult('success', '身份验证成功！', '恭喜您通过了Sensei验证！您已证明自己是真正的基沃托斯老师。');
+                    setTimeout(() => {
+                        groupInfo.style.display = 'block';
+                    }, 2000);
+                } else {
+                    showResult('failure', '验证失败！', `您答对了 ${score} 题，需要全部答对才能加入。剩余尝试次数: ${attempts}`);
+                }
+            });
+            
+            function showResult(type, title, message) {
+                resultDiv.className = 'result ' + type;
+                resultIcon.className = 'result-icon ' + (type === 'success' ? 'success-icon fas fa-check-circle' : 'failure-icon fas fa-times-circle');
+                resultMessage.innerHTML = `<h2>${title}</h2><p>${message}</p>`;
+                resultDiv.style.display = 'block';
+                
+                // 滚动到结果
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     </script>
 </body>
