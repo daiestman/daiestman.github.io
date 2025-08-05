@@ -123,7 +123,6 @@
             border-left: 4px solid var(--secondary);
             padding: 15px;
             border-radius: 0 8px 8px 0;
-            margin: 20px 0;
             font-size: 0.95rem;
             display: flex;
             align-items: flex-start;
@@ -372,16 +371,25 @@
             border-radius: 10px;
         }
         
+        /* 修复尝试次数计数器样式 */
         .attempts-counter {
             text-align: right;
             font-size: 0.9rem;
             color: #ff9966;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             padding: 8px 15px;
             background: rgba(255, 153, 102, 0.15);
             border-radius: 20px;
-            display: inline-block;
-            float: right;
+            /* 移除浮动 */
+            display: block;
+        }
+        
+        /* 添加警告容器以包含警告区域 */
+        .warning-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
         .file-info {
@@ -408,17 +416,21 @@
             <p class="subtitle">基沃托斯理事会对策室：通过验证以证明您真正的Sensei身份</p>
         </div>
         
-        <!-- 尝试次数计数器 -->
-        <div class="attempts-counter" id="attempts-counter">
-            剩余尝试次数: <span id="attempts-left">2</span>
-        </div>
-        
-        <div class="warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div>
-                <strong>重要提示:</strong> 
-                本验证系统专为保护社群环境、杜绝不当行为。请认真回答以下问题，真正的基沃托斯老师不会感到困难。
-                注意：每人仅有2次尝试机会，多次失败将无法加入！
+        <!-- 修复区域：添加警告容器包装尝试次数和重要提示 -->
+        <div class="warning-container">
+            <!-- 尝试次数计数器 -->
+            <div class="attempts-counter" id="attempts-counter">
+                剩余尝试次数: <span id="attempts-left">2</span>
+            </div>
+            
+            <!-- 重要提示 -->
+            <div class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>重要提示:</strong> 
+                    本验证系统专为保护社群环境、杜绝不当行为。请认真回答以下问题，真正的基沃托斯老师不会感到困难。
+                    注意：每人仅有2次尝试机会，多次失败将无法加入！
+                </div>
             </div>
         </div>
         
@@ -552,13 +564,13 @@
         
         <div class="art-section">
             <div class="art-item">
-                <img src="https://upload-bbs.miyoushe.com/upload/2023/03/22/308333512/dc2b30cb5c2aa3cbd1f9b8d93e7b9d3c_1447290001952761758.jpg" alt="Blue Archive">
+                
             </div>
             <div class="art-item">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/2078650/header.jpg" alt="Blue Archive">
+                
             </div>
             <div class="art-item">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/2078650/ss_1c1a2a6d26cd28a68b0cac78c42b8c2f6e8f40e5.600x338.jpg" alt="Blue Archive">
+                
             </div>
         </div>
         
